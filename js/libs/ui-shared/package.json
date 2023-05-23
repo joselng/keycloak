@@ -1,6 +1,6 @@
 {
   "name": "ui-shared",
-  "version": "999.0.0-SNAPSHOT",
+  "version": "21.1.1-GFT.Final",
   "type": "module",
   "main": "./dist/ui-shared.js",
   "types": "./dist/ui-shared.d.ts",

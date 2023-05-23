@@ -62,6 +62,8 @@ public class OIDCClientRepresentation {
 
     private String jwks_uri;
 
+    private String software_statement;
+
     private JSONWebKeySet jwks;
 
     private String sector_identifier_uri;
@@ -145,6 +147,14 @@ public class OIDCClientRepresentation {
     private String frontchannel_logout_uri;
 
     private Boolean frontchannel_logout_session_required;
+
+    public String getSoftwareStatement() {
+        return software_statement;
+    }
+
+    public void setSoftwareStatement(String software_statement) {
+        this.software_statement = software_statement;
+    }
 
     public List<String> getRedirectUris() {
         return redirect_uris;

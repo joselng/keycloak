@@ -51,13 +51,13 @@ jobs:
       - name: Build Keycloak
         run: |
           mvn clean install --batch-mode --errors -DskipTests -DskipTestsuite -DskipExamples -DskipAccount2 -DskipCommon -Pdistribution
-          mv ./quarkus/dist/target/keycloak-999.0.0-SNAPSHOT.tar.gz ./keycloak-999.0.0-SNAPSHOT.tar.gz
+          mv ./quarkus/dist/target/keycloak-21.1.1-GFT.Final.tar.gz ./keycloak-21.1.1-GFT.Final.tar.gz
 
       - name: Upload Keycloak dist
         uses: actions/upload-artifact@v3
         with:
           name: keycloak
-          path: keycloak-999.0.0-SNAPSHOT.tar.gz
+          path: keycloak-21.1.1-GFT.Final.tar.gz
 
   admin-client:
     name: Admin Client
@@ -217,8 +217,8 @@ jobs:
 
       - name: Start Keycloak Server
         run: |
-          tar xfvz keycloak-999.0.0-SNAPSHOT.tar.gz
-          keycloak-999.0.0-SNAPSHOT/bin/kc.sh start-dev --features=admin-fine-grained-authz,declarative-user-profile &> ~/server.log &
+          tar xfvz keycloak-21.1.1-GFT.Final.tar.gz
+          keycloak-21.1.1-GFT.Final/bin/kc.sh start-dev --features=admin-fine-grained-authz,declarative-user-profile &> ~/server.log &
         env:
           KEYCLOAK_ADMIN: admin
           KEYCLOAK_ADMIN_PASSWORD: admin
