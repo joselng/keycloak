@@ -26,4 +26,6 @@ public interface ErrorCodes {
 
     String INVALID_CLIENT_METADATA = "invalid_client_metadata";
 
+    String INVALID_SOFTWARE_STATEMENT = "invalid_software_statement";
+
 }
