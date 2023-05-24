@@ -266,7 +266,8 @@ public class OIDCClientRegistrationProvider extends AbstractClientRegistrationPr
         try {
             String ssaToken = oidcClient.getSoftwareStatement();
 
-            HttpGet request = new HttpGet("https://keystore.sandbox.directory.opinbrasil.com.br/openinsurance.jwks");
+            HttpGet request = new HttpGet(System.getProperty("jwks-uri"));
+            logger.info("URL JWKS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + System.getProperty("jwks-uri"));
             try (CloseableHttpClient httpClient = HttpClientBuilder.create().build();
                  CloseableHttpResponse response = httpClient.execute(request)) {
                 int status = response.getStatusLine().getStatusCode();
