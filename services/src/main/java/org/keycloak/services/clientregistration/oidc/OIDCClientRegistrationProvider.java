@@ -268,8 +268,8 @@ public class OIDCClientRegistrationProvider extends AbstractClientRegistrationPr
 
             logger.info("SSO >>>>>>>>>>>>>>>>>>>>>>> " + ssaToken);
 
-            HttpGet request = new HttpGet(System.getProperty("jwks-uri"));
-            logger.info("URL JWKS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + System.getProperty("jwks-uri"));
+            HttpGet request = new HttpGet(System.getenv("JWKS_URI"));
+            logger.info("URL JWKS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + System.getenv("JWKS_URI"));
             
             try (CloseableHttpClient httpClient = HttpClientBuilder.create().build();
                  CloseableHttpResponse response = httpClient.execute(request)) {

@@ -67,7 +67,7 @@ async function getNightlyAsset() {
   });
 
   return release.data.assets.find(
-    ({ name }) => name === "keycloak-21.1.1-GFT.Final.tar.gz"
+    ({ name }) => name === "keycloak-999.0.0-SNAPSHOT.tar.gz"
   );
 }
 
