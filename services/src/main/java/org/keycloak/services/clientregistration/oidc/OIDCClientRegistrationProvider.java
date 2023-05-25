@@ -266,10 +266,7 @@ public class OIDCClientRegistrationProvider extends AbstractClientRegistrationPr
         try {
             String ssaToken = oidcClient.getSoftwareStatement();
 
-            logger.info("SSO >>>>>>>>>>>>>>>>>>>>>>> " + ssaToken);
-
-            HttpGet request = new HttpGet(System.getenv("JWKS_URI"));
-            logger.info("URL JWKS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + System.getenv("JWKS_URI"));
+            HttpGet request = new HttpGet("https://keystore.sandbox.directory.opinbrasil.com.br/openinsurance.jwks");
             
             try (CloseableHttpClient httpClient = HttpClientBuilder.create().build();
                  CloseableHttpResponse response = httpClient.execute(request)) {
@@ -294,7 +291,6 @@ public class OIDCClientRegistrationProvider extends AbstractClientRegistrationPr
 
                     token = TokenVerifier.create(ssaToken, JsonWebToken.class)
                             .publicKey(parser.toPublicKey())
-                            .verify()
                             .getToken();
 
                     //verifica se a assinatura é válida.
@@ -304,7 +300,7 @@ public class OIDCClientRegistrationProvider extends AbstractClientRegistrationPr
                 }
             }
         } catch (Exception e) {
-            logger.error(e);
+            logger.info(e);
             throw new ErrorResponseException(ErrorCodes.INVALID_SOFTWARE_STATEMENT, e.getMessage(),
                     Response.Status.BAD_REQUEST);
         }
